@@ -26,3 +26,7 @@ Use `transport window-open` to create a timed delivery budget for a target. `tra
 ### Offline archive repair
 
 `archive stripe-seal` creates a padded XOR parity stripe from a sealed local checkpoint plus exact lengths and digests for its ordered members. An independent archive intake receives members using `archive member-receive`. When exactly one member is missing, `archive stripe-repair` reconstructs its bytes from parity and the members present in the archive, then verifies and records the recovered member. It leaves checkpoint, transfer and restore state untouched. Run `fixtures/archive.json` to exercise incomplete and repaired archives in the local simulator.
+
+### Source heap census
+
+`heap catalog-load` decodes a contiguous UTF-8 heap catalog in the `heap-catalog` region of a sealed memory capture, checks every root and strong edge, and records the exact object catalog. `heap heap-census` traverses the synthetic source heap from the roots and reports reachable and unreachable objects and byte sums. It counts shared nodes and cycles once. There is no connection to a running process. See `fixtures/heap.json`.

@@ -1,0 +1,79 @@
+[
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "checkpoint-request",
+      "event_id": "req",
+      "id": "req",
+      "pod": "p",
+      "uid": "u",
+      "generation": 1,
+      "source": "local"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "image-manifest",
+      "event_id": "manifest",
+      "id": "manifest",
+      "request": "req",
+      "part_count": 1,
+      "digest": "aa9ca86e9ff502394b19716f410dc59502f633f5700bca298691689b52f5d64f"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "chunk",
+      "event_id": "chunk",
+      "id": "chunk",
+      "manifest": "manifest",
+      "part": 0,
+      "content": "[{\"region\":\"heap-catalog\",\"offset\":0,\"hex\":\"7b22726f6f7473223a5b2241222c2242225d2c226f626a65\"},{\"region\":\"heap-catalog\",\"offset\":24,\"hex\":\"637473223a5b7b226964223a2241222c226279746573223a322c227374726f6e67223a5b2253225d7d2c7b226964223a2242222c226279746573223a332c227374726f6e67223a5b2253225d7d2c7b226964223a2253222c226279746573223a392c227374726f6e67223a5b2242225d7d2c7b226964223a2255222c226279746573223a352c227374726f6e67223a5b2256225d7d2c7b226964223a2256222c226279746573223a362c227374726f6e67223a5b2255225d7d5d7d\"}]"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "chunk-verify",
+      "event_id": "seal",
+      "manifest": "manifest"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "catalog-load",
+      "event_id": "early-catalog",
+      "id": "catalog",
+      "capture": "cap"
+    }
+  },
+  {
+    "command": "memorymap",
+    "input": {
+      "op": "capture-read",
+      "event_id": "capture",
+      "id": "cap",
+      "manifest": "manifest"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "catalog-load",
+      "event_id": "catalog-loaded",
+      "id": "catalog",
+      "capture": "cap"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-census",
+      "event_id": "census",
+      "catalog": "catalog"
+    }
+  }
+]
