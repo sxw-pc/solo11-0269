@@ -1,0 +1,450 @@
+[
+  {
+    "command": "media",
+    "input": {
+      "op": "medium-seal",
+      "event_id": "medium-W0",
+      "id": "medium-W0",
+      "variant": "W0",
+      "pages": {
+        "D": "0",
+        "Z": "x",
+        "P": "p0",
+        "Q": "empty",
+        "R": "r0",
+        "S": "empty"
+      }
+    }
+  },
+  {
+    "command": "warmup",
+    "input": {
+      "op": "profile-publish",
+      "event_id": "profile-W0",
+      "id": "profile-W0",
+      "variant": "W0",
+      "pages": [
+        "P",
+        "R"
+      ]
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-open",
+      "event_id": "admit-W0",
+      "id": "good-W0",
+      "medium": "medium-W0",
+      "allowance": 3
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "good-W0-D",
+      "reservation": "good-W0",
+      "page": "D"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "good-W0-P",
+      "reservation": "good-W0",
+      "page": "P"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "good-W0-R",
+      "reservation": "good-W0",
+      "page": "R"
+    }
+  },
+  {
+    "command": "warmup",
+    "input": {
+      "op": "serve-first",
+      "event_id": "good-serve-W0",
+      "id": "good-serve-W0",
+      "reservation": "good-W0",
+      "profile": "profile-W0"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "medium-seal",
+      "event_id": "medium-W1",
+      "id": "medium-W1",
+      "variant": "W1",
+      "pages": {
+        "D": "0",
+        "Z": "y",
+        "P": "p1",
+        "Q": "empty",
+        "R": "empty",
+        "S": "s1"
+      }
+    }
+  },
+  {
+    "command": "warmup",
+    "input": {
+      "op": "profile-publish",
+      "event_id": "profile-W1",
+      "id": "profile-W1",
+      "variant": "W1",
+      "pages": [
+        "P",
+        "S"
+      ]
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-open",
+      "event_id": "admit-W1",
+      "id": "good-W1",
+      "medium": "medium-W1",
+      "allowance": 3
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "good-W1-D",
+      "reservation": "good-W1",
+      "page": "D"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "good-W1-P",
+      "reservation": "good-W1",
+      "page": "P"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "good-W1-S",
+      "reservation": "good-W1",
+      "page": "S"
+    }
+  },
+  {
+    "command": "warmup",
+    "input": {
+      "op": "serve-first",
+      "event_id": "good-serve-W1",
+      "id": "good-serve-W1",
+      "reservation": "good-W1",
+      "profile": "profile-W1"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "medium-seal",
+      "event_id": "medium-W2",
+      "id": "medium-W2",
+      "variant": "W2",
+      "pages": {
+        "D": "1",
+        "Z": "z",
+        "P": "empty",
+        "Q": "q2",
+        "R": "r2",
+        "S": "empty"
+      }
+    }
+  },
+  {
+    "command": "warmup",
+    "input": {
+      "op": "profile-publish",
+      "event_id": "profile-W2",
+      "id": "profile-W2",
+      "variant": "W2",
+      "pages": [
+        "Q",
+        "R"
+      ]
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-open",
+      "event_id": "admit-W2",
+      "id": "good-W2",
+      "medium": "medium-W2",
+      "allowance": 3
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "good-W2-D",
+      "reservation": "good-W2",
+      "page": "D"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "good-W2-Q",
+      "reservation": "good-W2",
+      "page": "Q"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "good-W2-R",
+      "reservation": "good-W2",
+      "page": "R"
+    }
+  },
+  {
+    "command": "warmup",
+    "input": {
+      "op": "serve-first",
+      "event_id": "good-serve-W2",
+      "id": "good-serve-W2",
+      "reservation": "good-W2",
+      "profile": "profile-W2"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "medium-seal",
+      "event_id": "medium-W3",
+      "id": "medium-W3",
+      "variant": "W3",
+      "pages": {
+        "D": "1",
+        "Z": "x",
+        "P": "empty",
+        "Q": "q3",
+        "R": "empty",
+        "S": "s3"
+      }
+    }
+  },
+  {
+    "command": "warmup",
+    "input": {
+      "op": "profile-publish",
+      "event_id": "profile-W3",
+      "id": "profile-W3",
+      "variant": "W3",
+      "pages": [
+        "Q",
+        "S"
+      ]
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-open",
+      "event_id": "admit-W3",
+      "id": "good-W3",
+      "medium": "medium-W3",
+      "allowance": 3
+    }
+  },
+  {
+    "command": "warmup",
+    "input": {
+      "op": "serve-first",
+      "event_id": "initial-miss",
+      "id": "initial",
+      "reservation": "good-W3",
+      "profile": "profile-W3"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "good-W3-D",
+      "reservation": "good-W3",
+      "page": "D"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "good-W3-Q",
+      "reservation": "good-W3",
+      "page": "Q"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "good-W3-S",
+      "reservation": "good-W3",
+      "page": "S"
+    }
+  },
+  {
+    "command": "warmup",
+    "input": {
+      "op": "serve-first",
+      "event_id": "good-serve-W3",
+      "id": "good-serve-W3",
+      "reservation": "good-W3",
+      "profile": "profile-W3"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-open",
+      "event_id": "decoy-W0",
+      "id": "decoy-W0",
+      "medium": "medium-W0",
+      "allowance": 3
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "decoy-W0-Z",
+      "reservation": "decoy-W0",
+      "page": "Z"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "decoy-W0-P",
+      "reservation": "decoy-W0",
+      "page": "P"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "decoy-W0-R",
+      "reservation": "decoy-W0",
+      "page": "R"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "decoy-W0-Q",
+      "reservation": "decoy-W0",
+      "page": "Q"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "decoy-W0-S",
+      "reservation": "decoy-W0",
+      "page": "S"
+    }
+  },
+  {
+    "command": "warmup",
+    "input": {
+      "op": "serve-first",
+      "event_id": "decoy-serve-W0",
+      "id": "decoy-serve-W0",
+      "reservation": "decoy-W0",
+      "profile": "profile-W0"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-open",
+      "event_id": "decoy-W3",
+      "id": "decoy-W3",
+      "medium": "medium-W3",
+      "allowance": 3
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "decoy-W3-Z",
+      "reservation": "decoy-W3",
+      "page": "Z"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "decoy-W3-P",
+      "reservation": "decoy-W3",
+      "page": "P"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "decoy-W3-R",
+      "reservation": "decoy-W3",
+      "page": "R"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "decoy-W3-Q",
+      "reservation": "decoy-W3",
+      "page": "Q"
+    }
+  },
+  {
+    "command": "media",
+    "input": {
+      "op": "read-page",
+      "event_id": "decoy-W3-S",
+      "reservation": "decoy-W3",
+      "page": "S"
+    }
+  },
+  {
+    "command": "warmup",
+    "input": {
+      "op": "serve-first",
+      "event_id": "decoy-serve-W3",
+      "id": "decoy-serve-W3",
+      "reservation": "decoy-W3",
+      "profile": "profile-W3"
+    }
+  }
+]
