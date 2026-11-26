@@ -22,3 +22,7 @@ Use `transport window-open` to create a timed delivery budget for a target. `tra
 ### Source-side capture comparison
 
 `memorymap capture-read` interprets a sealed checkpoint as an array of simulated memory spans with region, byte offset and hexadecimal payload. It rejects overlapping ranges instead of hiding bytes under the latest observation. `forensics capture-compare` records changed or absent bytes between two ordered captures of the same process identity. It is an audit tool and does not activate an instance. See `fixtures/forensics.json`.
+
+### Offline archive repair
+
+`archive stripe-seal` creates a padded XOR parity stripe from a sealed local checkpoint plus exact lengths and digests for its ordered members. An independent archive intake receives members using `archive member-receive`. When exactly one member is missing, `archive stripe-repair` reconstructs its bytes from parity and the members present in the archive, then verifies and records the recovered member. It leaves checkpoint, transfer and restore state untouched. Run `fixtures/archive.json` to exercise incomplete and repaired archives in the local simulator.

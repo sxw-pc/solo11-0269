@@ -1,0 +1,138 @@
+[
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "checkpoint-request",
+      "event_id": "request",
+      "id": "request",
+      "pod": "p",
+      "uid": "u",
+      "generation": 1,
+      "source": "local"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "image-manifest",
+      "event_id": "manifest",
+      "id": "manifest",
+      "request": "request",
+      "part_count": 3,
+      "digest": "ad12006188cf723f7be7029a740ae487d7caa21f4b086998764f25b51c914981"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "chunk",
+      "event_id": "chunk0",
+      "id": "chunk0",
+      "manifest": "manifest",
+      "part": 0,
+      "content": "atlas"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "chunk",
+      "event_id": "chunk1",
+      "id": "chunk1",
+      "manifest": "manifest",
+      "part": 1,
+      "content": "SEED"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "chunk",
+      "event_id": "chunk2",
+      "id": "chunk2",
+      "manifest": "manifest",
+      "part": 2,
+      "content": "00"
+    }
+  },
+  {
+    "command": "archive",
+    "input": {
+      "op": "stripe-seal",
+      "event_id": "early",
+      "id": "stripe",
+      "manifest": "manifest"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "chunk-verify",
+      "event_id": "verify",
+      "manifest": "manifest"
+    }
+  },
+  {
+    "command": "archive",
+    "input": {
+      "op": "stripe-seal",
+      "event_id": "seal",
+      "id": "stripe",
+      "manifest": "manifest"
+    }
+  },
+  {
+    "command": "archive",
+    "input": {
+      "op": "member-receive",
+      "event_id": "wrong",
+      "stripe": "stripe",
+      "part": 1,
+      "content": "XXXX"
+    }
+  },
+  {
+    "command": "archive",
+    "input": {
+      "op": "member-receive",
+      "event_id": "member0",
+      "stripe": "stripe",
+      "part": 0,
+      "content": "atlas"
+    }
+  },
+  {
+    "command": "archive",
+    "input": {
+      "op": "stripe-repair",
+      "event_id": "repair-early",
+      "stripe": "stripe"
+    }
+  },
+  {
+    "command": "archive",
+    "input": {
+      "op": "member-receive",
+      "event_id": "member2",
+      "stripe": "stripe",
+      "part": 2,
+      "content": "00"
+    }
+  },
+  {
+    "command": "archive",
+    "input": {
+      "op": "stripe-repair",
+      "event_id": "repair",
+      "stripe": "stripe"
+    }
+  },
+  {
+    "command": "archive",
+    "input": {
+      "op": "stripe-repair",
+      "event_id": "complete",
+      "stripe": "stripe"
+    }
+  }
+]
