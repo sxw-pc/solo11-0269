@@ -1,0 +1,99 @@
+[
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "req",
+      "op": "checkpoint-request",
+      "id": "req",
+      "pod": "p",
+      "uid": "u1",
+      "generation": 3,
+      "source": "source-node"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "manifest",
+      "op": "image-manifest",
+      "id": "manifest",
+      "request": "req",
+      "part_count": 2,
+      "digest": "91edb7ef9566e04e1d938629fc1ac4c75387865d17e1d39cfcd5137783fab229"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "chunk0",
+      "op": "chunk",
+      "id": "c0",
+      "manifest": "manifest",
+      "part": 0,
+      "content": "mem"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "chunk1",
+      "op": "chunk",
+      "id": "c1",
+      "manifest": "manifest",
+      "part": 1,
+      "content": "fs"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "verify",
+      "op": "chunk-verify",
+      "manifest": "manifest"
+    }
+  },
+  {
+    "command": "transfer",
+    "input": {
+      "event_id": "plan",
+      "op": "transfer-reserve",
+      "id": "plan",
+      "reservation": "slot",
+      "request": "req",
+      "target": "target-node",
+      "expires": 100,
+      "at": 10
+    }
+  },
+  {
+    "command": "transfer",
+    "input": {
+      "event_id": "freeze",
+      "op": "source-freeze",
+      "id": "fence",
+      "plan": "plan",
+      "uid": "u1",
+      "generation": 3
+    }
+  },
+  {
+    "command": "restore",
+    "input": {
+      "event_id": "restore",
+      "op": "target-restore",
+      "id": "restore",
+      "plan": "plan",
+      "target": "target-node",
+      "digest": "91edb7ef9566e04e1d938629fc1ac4c75387865d17e1d39cfcd5137783fab229",
+      "at": 20
+    }
+  },
+  {
+    "command": "restore",
+    "input": {
+      "event_id": "activate",
+      "op": "single-active-commit",
+      "restore": "restore"
+    }
+  }
+]
