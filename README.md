@@ -18,3 +18,7 @@ The transfer team can opt into a target-local checkpoint copy using `copy-open`,
 ### Bandwidth-constrained transfer windows
 
 Use `transport window-open` to create a timed delivery budget for a target. `transport part-send` charges the transmitted UTF-8 bytes, even when the local receiver rejects an invalid payload. A delivery id is unique and a repeated event returns its original result. The receiver still stores only parts matching the sealed manifest. `fixtures/wire.json` demonstrates a rejected payload, an exhausted window and delivery recovered through a second window. No sockets, devices or live migration are used.
+
+### Source-side capture comparison
+
+`memorymap capture-read` interprets a sealed checkpoint as an array of simulated memory spans with region, byte offset and hexadecimal payload. It rejects overlapping ranges instead of hiding bytes under the latest observation. `forensics capture-compare` records changed or absent bytes between two ordered captures of the same process identity. It is an audit tool and does not activate an instance. See `fixtures/forensics.json`.

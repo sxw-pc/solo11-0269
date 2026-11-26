@@ -1,0 +1,132 @@
+[
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "r-before",
+      "op": "checkpoint-request",
+      "id": "r-before",
+      "pod": "p",
+      "uid": "u",
+      "generation": 1,
+      "source": "n"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "m-before",
+      "op": "image-manifest",
+      "id": "m-before",
+      "request": "r-before",
+      "part_count": 1,
+      "digest": "8f292638ecf3855b20cfa550e464d4ad5344f05b30e6fd59fefefacc5be240c6"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "b-before",
+      "op": "chunk",
+      "id": "b-before",
+      "manifest": "m-before",
+      "part": 0,
+      "content": "[{\"region\":\"heap\",\"offset\":2,\"hex\":\"010203\"}]"
+    }
+  },
+  {
+    "command": "memorymap",
+    "input": {
+      "event_id": "early-before",
+      "op": "capture-read",
+      "id": "early-before",
+      "manifest": "m-before"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "seal-before",
+      "op": "chunk-verify",
+      "manifest": "m-before"
+    }
+  },
+  {
+    "command": "memorymap",
+    "input": {
+      "event_id": "before",
+      "op": "capture-read",
+      "id": "before",
+      "manifest": "m-before"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "r-after",
+      "op": "checkpoint-request",
+      "id": "r-after",
+      "pod": "p",
+      "uid": "u",
+      "generation": 2,
+      "source": "n"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "m-after",
+      "op": "image-manifest",
+      "id": "m-after",
+      "request": "r-after",
+      "part_count": 1,
+      "digest": "ef91b7829b829b49a8d25c66d998222aa5d9b76525bd03ecbe001a4bd609abc0"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "b-after",
+      "op": "chunk",
+      "id": "b-after",
+      "manifest": "m-after",
+      "part": 0,
+      "content": "[{\"region\":\"heap\",\"offset\":2,\"hex\":\"0104\"}]"
+    }
+  },
+  {
+    "command": "memorymap",
+    "input": {
+      "event_id": "early-after",
+      "op": "capture-read",
+      "id": "early-after",
+      "manifest": "m-after"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "seal-after",
+      "op": "chunk-verify",
+      "manifest": "m-after"
+    }
+  },
+  {
+    "command": "memorymap",
+    "input": {
+      "event_id": "after",
+      "op": "capture-read",
+      "id": "after",
+      "manifest": "m-after"
+    }
+  },
+  {
+    "command": "forensics",
+    "input": {
+      "event_id": "compare",
+      "op": "capture-compare",
+      "id": "comparison",
+      "older": "before",
+      "newer": "after"
+    }
+  }
+]
