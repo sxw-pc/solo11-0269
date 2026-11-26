@@ -1,0 +1,89 @@
+[
+  {
+    "command": "journal",
+    "input": {
+      "op": "page-source",
+      "event_id": "source",
+      "id": "p",
+      "pages": 3,
+      "width": 2
+    }
+  },
+  {
+    "command": "precopy",
+    "input": {
+      "op": "round-export",
+      "event_id": "base",
+      "id": "base",
+      "source": "p"
+    }
+  },
+  {
+    "command": "precopy",
+    "input": {
+      "op": "round-export",
+      "event_id": "early",
+      "id": "early",
+      "source": "p",
+      "base": "base"
+    }
+  },
+  {
+    "command": "journal",
+    "input": {
+      "op": "page-commit",
+      "event_id": "bad",
+      "source": "p",
+      "tick": 1,
+      "changes": {
+        "0": "abcd",
+        "1": "ef"
+      }
+    }
+  },
+  {
+    "command": "journal",
+    "input": {
+      "op": "page-commit",
+      "event_id": "commit",
+      "source": "p",
+      "tick": 1,
+      "changes": {
+        "0": "abcd",
+        "1": "ef01"
+      }
+    }
+  },
+  {
+    "command": "precopy",
+    "input": {
+      "op": "round-export",
+      "event_id": "delta",
+      "id": "delta",
+      "source": "p",
+      "base": "base"
+    }
+  },
+  {
+    "command": "journal",
+    "input": {
+      "op": "page-commit",
+      "event_id": "revert",
+      "source": "p",
+      "tick": 2,
+      "changes": {
+        "0": "0000"
+      }
+    }
+  },
+  {
+    "command": "precopy",
+    "input": {
+      "op": "round-export",
+      "event_id": "delta2",
+      "id": "delta2",
+      "source": "p",
+      "base": "base"
+    }
+  }
+]

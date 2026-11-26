@@ -30,3 +30,7 @@ Use `transport window-open` to create a timed delivery budget for a target. `tra
 ### Source heap census
 
 `heap catalog-load` decodes a contiguous UTF-8 heap catalog in the `heap-catalog` region of a sealed memory capture, checks every root and strong edge, and records the exact object catalog. `heap heap-census` traverses the synthetic source heap from the roots and reports reachable and unreachable objects and byte sums. It counts shared nodes and cycles once. There is no connection to a running process. See `fixtures/heap.json`.
+
+### Source page rounds
+
+`journal page-source` opens a synthetic source with fixed-width blank pages. A `journal page-commit` publishes a consecutive tick and changes one or more pages atomically. `precopy round-export` records a full image at the current tick or a delta against a previously exported round of the same source. It returns the actual dirty bytes that differ at the two committed cuts. Run `fixtures/precopy.json` for a full round, an empty delta and a two-page delta.
