@@ -1,0 +1,120 @@
+[
+  {
+    "command": "mailroom",
+    "input": {
+      "op": "port-open",
+      "event_id": "open-sender",
+      "port": "sender"
+    }
+  },
+  {
+    "command": "mailroom",
+    "input": {
+      "op": "port-open",
+      "event_id": "open-receiver",
+      "port": "receiver"
+    }
+  },
+  {
+    "command": "mailroom",
+    "input": {
+      "op": "cut",
+      "event_id": "snap-s0",
+      "id": "s0",
+      "port": "sender"
+    }
+  },
+  {
+    "command": "mailroom",
+    "input": {
+      "op": "cut",
+      "event_id": "snap-r0",
+      "id": "r0",
+      "port": "receiver"
+    }
+  },
+  {
+    "command": "mailroom",
+    "input": {
+      "op": "send",
+      "event_id": "send-0",
+      "id": "a",
+      "port": "sender",
+      "receiver": "receiver",
+      "body": "tile A"
+    }
+  },
+  {
+    "command": "mailroom",
+    "input": {
+      "op": "cut",
+      "event_id": "snap-s1",
+      "id": "s1",
+      "port": "sender"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-recover",
+      "event_id": "recover-work",
+      "id": "work",
+      "sender_cut": "s1",
+      "receiver_cut": "r0"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-deliver",
+      "event_id": "actual-work",
+      "id": "work"
+    }
+  },
+  {
+    "command": "mailroom",
+    "input": {
+      "op": "arrive",
+      "event_id": "arrive-a",
+      "id": "a",
+      "port": "receiver"
+    }
+  },
+  {
+    "command": "mailroom",
+    "input": {
+      "op": "cut",
+      "event_id": "snap-r1",
+      "id": "r1",
+      "port": "receiver"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-recover",
+      "event_id": "recover-invalid",
+      "id": "invalid",
+      "sender_cut": "s0",
+      "receiver_cut": "r1"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-recover",
+      "event_id": "recover-empty",
+      "id": "empty",
+      "sender_cut": "s1",
+      "receiver_cut": "r1"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-deliver",
+      "event_id": "actual-empty",
+      "id": "empty"
+    }
+  }
+]
