@@ -10,3 +10,7 @@
 
 三个独立命令：`python -m checkpointcourt checkpoint --db state.sqlite --fixture fixtures/checkpoint_normal.json`, `python -m checkpointcourt transfer --db state.sqlite --fixture fixtures/transfer_normal.json`, `python -m checkpointcourt restore --db state.sqlite --fixture fixtures/restore_normal.json`。
 回放 `python -m checkpointcourt replay --db state.sqlite`；测试 `python -m unittest discover -s tests -v`。
+
+### Target copy custody
+
+The transfer team can opt into a target-local checkpoint copy using `copy-open`, `copy-part` and `copy-verify` on the `transfer` command. Each part is compared with the sealed source manifest. The target verifies the complete ordered image from local bytes before the restore module accepts a matching digest. Receipts relate to exactly one plan and target, and are accepted only during its reservation. Legacy plans without a registered copy retain their original behavior. See `fixtures/target-copy.json` for an offline demonstration.

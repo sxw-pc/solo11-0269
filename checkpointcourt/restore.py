@@ -1,3 +1,4 @@
+from . import custody
 from .store import one
 SCHEMA='''
 CREATE TABLE IF NOT EXISTS restore_attempts(id TEXT PRIMARY KEY,plan TEXT,target TEXT,digest TEXT,at INTEGER,status TEXT);
@@ -13,6 +14,8 @@ def handle(db,x):
         fence=one(db,"SELECT * FROM source_fences WHERE request=? AND status='frozen'",(r['id'],)) if r else None
         if not p or p['status']!='frozen' or not reserve or not fence or reserve['expires']<=x['at'] or x['target']!=p['target'] or x['digest']!=m['digest']:
             return {'decision':'restore_denied'}
+        if not custody.authorizes_restore(db,p,m,x['at']):
+            return {'decision':'target_copy_unproven'}
         db.execute('INSERT INTO restore_attempts VALUES(?,?,?,?,?,?)',(x['id'],p['id'],p['target'],x['digest'],x['at'],'verified'))
         return {'decision':'target_verified'}
     if x['op']=='single-active-commit':

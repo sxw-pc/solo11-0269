@@ -1,11 +1,14 @@
+from . import custody
 from .store import one
 SCHEMA='''
 CREATE TABLE IF NOT EXISTS transfer_plans(id TEXT PRIMARY KEY,request TEXT,target TEXT,status TEXT);
 CREATE TABLE IF NOT EXISTS source_fences(id TEXT PRIMARY KEY,request TEXT,uid TEXT,generation INTEGER,at INTEGER,status TEXT);
 CREATE TABLE IF NOT EXISTS target_reservations(id TEXT PRIMARY KEY,plan TEXT,target TEXT,expires INTEGER,status TEXT);
 CREATE TABLE IF NOT EXISTS source_recovery_receipts(id TEXT PRIMARY KEY,plan TEXT,request TEXT,uid TEXT,generation INTEGER,at INTEGER,status TEXT);
-'''
+''' + custody.SCHEMA
 def handle(db,x):
+    if x['op'] in ('copy-open','copy-part','copy-verify'):
+        return custody.transfer(db,x)
     if x['op']=='transfer-reserve':
         r=one(db,'SELECT * FROM checkpoint_requests WHERE id=?',(x['request'],))
         m=one(db,"SELECT * FROM manifests WHERE request=? AND status='sealed'",(x['request'],))
