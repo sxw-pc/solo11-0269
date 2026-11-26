@@ -1,0 +1,213 @@
+[
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "req",
+      "op": "checkpoint-request",
+      "id": "req",
+      "pod": "p",
+      "uid": "u1",
+      "generation": 3,
+      "source": "source-node"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "manifest",
+      "op": "image-manifest",
+      "id": "manifest",
+      "request": "req",
+      "part_count": 2,
+      "digest": "91edb7ef9566e04e1d938629fc1ac4c75387865d17e1d39cfcd5137783fab229"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "chunk0",
+      "op": "chunk",
+      "id": "c0",
+      "manifest": "manifest",
+      "part": 0,
+      "content": "mem"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "chunk1",
+      "op": "chunk",
+      "id": "c1",
+      "manifest": "manifest",
+      "part": 1,
+      "content": "fs"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "event_id": "verify",
+      "op": "chunk-verify",
+      "manifest": "manifest"
+    }
+  },
+  {
+    "command": "transfer",
+    "input": {
+      "event_id": "plan",
+      "op": "transfer-reserve",
+      "id": "plan",
+      "reservation": "slot",
+      "request": "req",
+      "target": "target-node",
+      "expires": 100,
+      "at": 10,
+      "wire_only": true
+    }
+  },
+  {
+    "command": "transfer",
+    "input": {
+      "event_id": "freeze",
+      "op": "source-freeze",
+      "id": "fence",
+      "plan": "plan",
+      "uid": "u1",
+      "generation": 3
+    }
+  },
+  {
+    "command": "transfer",
+    "input": {
+      "event_id": "open-copy",
+      "op": "copy-open",
+      "at": 11,
+      "plan": "plan",
+      "target": "target-node",
+      "manifest": "manifest"
+    }
+  },
+  {
+    "command": "transport",
+    "input": {
+      "event_id": "first-window",
+      "op": "window-open",
+      "target": "target-node",
+      "id": "first",
+      "starts": 12,
+      "ends": 20,
+      "budget": 4
+    }
+  },
+  {
+    "command": "transport",
+    "input": {
+      "event_id": "corrupt",
+      "op": "part-send",
+      "target": "target-node",
+      "id": "corrupt",
+      "window": "first",
+      "part": 1,
+      "content": "xx",
+      "plan": "plan",
+      "at": 13
+    }
+  },
+  {
+    "command": "transfer",
+    "input": {
+      "event_id": "direct",
+      "op": "copy-part",
+      "at": 16,
+      "plan": "plan",
+      "target": "target-node",
+      "part": 0,
+      "content": "mem"
+    }
+  },
+  {
+    "command": "transport",
+    "input": {
+      "event_id": "full-window",
+      "op": "part-send",
+      "target": "target-node",
+      "id": "full",
+      "window": "first",
+      "part": 0,
+      "content": "mem",
+      "plan": "plan",
+      "at": 14
+    }
+  },
+  {
+    "command": "transport",
+    "input": {
+      "event_id": "wire-one",
+      "op": "part-send",
+      "target": "target-node",
+      "id": "one",
+      "window": "first",
+      "part": 1,
+      "content": "fs",
+      "plan": "plan",
+      "at": 14
+    }
+  },
+  {
+    "command": "transport",
+    "input": {
+      "event_id": "second-window",
+      "op": "window-open",
+      "target": "target-node",
+      "id": "second",
+      "starts": 14,
+      "ends": 20,
+      "budget": 3
+    }
+  },
+  {
+    "command": "transport",
+    "input": {
+      "event_id": "wire-zero",
+      "op": "part-send",
+      "target": "target-node",
+      "id": "zero",
+      "window": "second",
+      "part": 0,
+      "content": "mem",
+      "plan": "plan",
+      "at": 16
+    }
+  },
+  {
+    "command": "transfer",
+    "input": {
+      "event_id": "verify-copy",
+      "op": "copy-verify",
+      "at": 17,
+      "plan": "plan",
+      "target": "target-node"
+    }
+  },
+  {
+    "command": "restore",
+    "input": {
+      "event_id": "restore",
+      "op": "target-restore",
+      "id": "restore",
+      "plan": "plan",
+      "target": "target-node",
+      "digest": "91edb7ef9566e04e1d938629fc1ac4c75387865d17e1d39cfcd5137783fab229",
+      "at": 20
+    }
+  },
+  {
+    "command": "restore",
+    "input": {
+      "event_id": "activate",
+      "op": "single-active-commit",
+      "restore": "restore"
+    }
+  }
+]

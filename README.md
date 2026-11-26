@@ -14,3 +14,7 @@
 ### Target copy custody
 
 The transfer team can opt into a target-local checkpoint copy using `copy-open`, `copy-part` and `copy-verify` on the `transfer` command. Each part is compared with the sealed source manifest. The target verifies the complete ordered image from local bytes before the restore module accepts a matching digest. Receipts relate to exactly one plan and target, and are accepted only during its reservation. Legacy plans without a registered copy retain their original behavior. See `fixtures/target-copy.json` for an offline demonstration.
+
+### Bandwidth-constrained transfer windows
+
+Use `transport window-open` to create a timed delivery budget for a target. `transport part-send` charges the transmitted UTF-8 bytes, even when the local receiver rejects an invalid payload. A delivery id is unique and a repeated event returns its original result. The receiver still stores only parts matching the sealed manifest. `fixtures/wire.json` demonstrates a rejected payload, an exhausted window and delivery recovered through a second window. No sockets, devices or live migration are used.
