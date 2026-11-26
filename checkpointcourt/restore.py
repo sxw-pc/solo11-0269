@@ -29,8 +29,10 @@ def handle(db,x):
         p=one(db,'SELECT * FROM transfer_plans WHERE id=?',(x['plan'],))
         r=one(db,'SELECT * FROM checkpoint_requests WHERE id=?',(p['request'],)) if p else None
         fence=one(db,'SELECT * FROM source_fences WHERE request=?',(r['id'],)) if r else None
-        witness=one(db,"SELECT * FROM source_recovery_receipts WHERE request=? AND status='intact' ORDER BY at DESC LIMIT 1",(r['id'],)) if r else None
-        if not r or p['status']!='frozen' or not fence or not witness or witness['at']>x['at']:
+        witness=one(db,"SELECT * FROM source_recovery_receipts WHERE plan=? AND request=? AND status='intact' ORDER BY at DESC LIMIT 1",(p['id'],r['id'])) if r else None
+        active=one(db,'SELECT * FROM active_instances WHERE pod=?',(r['pod'],)) if r else None
+        committed=one(db,"SELECT 1 FROM transfer_plans WHERE request=? AND id<>? AND status='committed'",(r['id'],p['id'])) if r else None
+        if not r or p['status']!='frozen' or not fence or not witness or witness['at']>x['at'] or committed or active and active['node']!=r['source']:
             return {'decision':'fallback_unproven'}
         db.execute('INSERT INTO fallback_cases VALUES(?,?,?,?)',(x['id'],p['id'],x['reason'],'recovered'))
         db.execute('INSERT INTO active_instances VALUES(?,?,?,?,?) ON CONFLICT(pod) DO UPDATE SET uid=excluded.uid,node=excluded.node,generation=excluded.generation,status=excluded.status',(r['pod'],r['uid'],r['source'],r['generation'],'active'))

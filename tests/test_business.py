@@ -49,8 +49,15 @@ class BusinessTests(unittest.TestCase):
         for event in events[:7]:run(self.db,event['command'],event['input'])
         request={'event_id':'fallback','op':'failure-fallback','id':'fallback','plan':'plan','reason':'target_failed','at':25}
         self.assertEqual(run(self.db,'restore',request)['decision'],'fallback_unproven')
-        self.assertEqual(run(self.db,'transfer',{'event_id':'witness','op':'source-recovery-witness','id':'witness','request':'req','uid':'u1','generation':3,'at':20})['decision'],'source_recoverable')
+        self.assertEqual(run(self.db,'transfer',{'event_id':'witness','op':'source-recovery-witness','id':'witness','plan':'plan','request':'req','uid':'u1','generation':3,'at':20})['decision'],'source_recoverable')
         self.assertEqual(run(self.db,'restore',dict(request,event_id='fallback-2',id='fallback-2'))['decision'],'source_restored')
         self.assertEqual(one(self.db,"SELECT node FROM active_instances WHERE pod='p'")['node'],'source-node')
+    def test_second_transfer_cannot_overwrite_committed_target(self):
+        events=json.loads((ROOT/'fixtures'/'path.json').read_text(encoding='utf-8'))
+        for event in events[:9]:run(self.db,event['command'],event['input'])
+        second={'event_id':'second-plan','op':'transfer-reserve','id':'second-plan','reservation':'second-slot','request':'req','target':'third-node','expires':100,'at':21}
+        self.assertEqual(run(self.db,'transfer',second)['decision'],'transfer_already_owned')
+        self.assertEqual(run(self.db,'transfer',{'event_id':'second-freeze','op':'source-freeze','id':'second-fence','plan':'second-plan','uid':'u1','generation':3,'at':22})['decision'],'freeze_denied')
+        self.assertEqual(one(self.db,"SELECT node FROM active_instances WHERE pod='p'")['node'],'target-node')
 
 print('module_file',checkpointcourt.__file__)
