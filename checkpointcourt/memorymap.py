@@ -56,3 +56,12 @@ def read_cells(db, capture):
     return {(span['region'], span['offset']+index):value
             for span in rows(db, 'SELECT * FROM memory_spans WHERE capture=?', (capture,))
             for index,value in enumerate(bytes.fromhex(span['payload']))}
+
+
+def capture_exists(db, capture):
+    """A heap plan or claim is only valid against a capture actually on record.
+
+    The same SELECT that gates ``INSERT INTO memory_captures`` keeps the heap
+    and allocator modules bound to the layout of a real, sealed capture.
+    """
+    return one(db, 'SELECT 1 FROM memory_captures WHERE id=?', (capture,)) is not None

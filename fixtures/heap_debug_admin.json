@@ -1,0 +1,163 @@
+[
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "checkpoint-request",
+      "event_id": "da-req",
+      "id": "da-req",
+      "pod": "pod-debug",
+      "uid": "da-uid",
+      "generation": 1,
+      "source": "local"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "image-manifest",
+      "event_id": "da-manifest",
+      "id": "da-manifest",
+      "request": "da-req",
+      "part_count": 1,
+      "digest": "02830f31247489868d237869c85b436f7265b50b4f91a00b2c57d9c0de96c735"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "chunk",
+      "event_id": "da-chunk",
+      "id": "da-chunk",
+      "manifest": "da-manifest",
+      "part": 0,
+      "content": "[{\"region\":\"heap-catalog\",\"offset\":0,\"hex\":\"7b22726f6f7473223a5b2254225d2c2268616e646c6573223a5b7b226964223a224831222c22746172676574223a224b31227d2c7b226964223a224832222c22746172676574223a224b32227d5d2c227461626c6573223a5b7b226964223a2254222c22656e7472696573223a5b7b226b6579223a224b31222c2276616c7565223a225631222c2267656e65726174696f6e223a317d2c7b226b6579223a224b32222c2276616c7565223a225632222c2267656e65726174696f6e223a317d5d7d\"},{\"region\":\"heap-catalog\",\"offset\":193,\"hex\":\"5d2c226f626a65637473223a5b7b226964223a2254222c226279746573223a332c227374726f6e67223a5b2254225d7d2c7b226964223a224b31222c226279746573223a322c227374726f6e67223a5b5d7d2c7b226964223a224b32222c226279746573223a322c227374726f6e67223a5b5d7d2c7b226964223a225631222c226279746573223a352c227374726f6e67223a5b224b32225d7d2c7b226964223a225632222c226279746573223a372c227374726f6e67223a5b224b31225d7d5d7d\"}]"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "chunk-verify",
+      "event_id": "da-seal",
+      "manifest": "da-manifest"
+    }
+  },
+  {
+    "command": "memorymap",
+    "input": {
+      "op": "capture-read",
+      "id": "da-cap",
+      "manifest": "da-manifest",
+      "event_id": "da-capture"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "catalog-load",
+      "id": "da-catalog",
+      "capture": "da-cap",
+      "event_id": "da-load"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-plan-propose",
+      "id": "da-plan",
+      "catalog": "da-catalog",
+      "scope": "debug-session",
+      "at": 30,
+      "actions": [
+        {
+          "action": "clear-entry",
+          "table": "T",
+          "key": "K1"
+        },
+        {
+          "action": "clear-entry",
+          "table": "T",
+          "key": "K2"
+        }
+      ],
+      "event_id": "da-plan"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-plan-authorize",
+      "plan": "da-plan",
+      "scope": "debug-session",
+      "admin": "debug-session-admin",
+      "at": 31,
+      "event_id": "da-auth"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-plan-execute",
+      "plan": "da-plan",
+      "at": 32,
+      "event_id": "da-exec"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-handle-read",
+      "catalog": "da-catalog",
+      "handle": "H1",
+      "event_id": "da-read-h1"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-handle-read",
+      "catalog": "da-catalog",
+      "handle": "H2",
+      "event_id": "da-read-h2"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-entry-read",
+      "catalog": "da-catalog",
+      "table": "T",
+      "key": "K1",
+      "event_id": "da-read-e1"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-entry-read",
+      "catalog": "da-catalog",
+      "table": "T",
+      "key": "K2",
+      "event_id": "da-read-e2"
+    }
+  },
+  {
+    "command": "allocator",
+    "input": {
+      "op": "alloc-claim",
+      "id": "da-claim12",
+      "catalog": "da-catalog",
+      "plan": "da-plan",
+      "size": 12,
+      "at": 33,
+      "event_id": "da-claim12"
+    }
+  },
+  {
+    "command": "allocator",
+    "input": {
+      "op": "alloc-status",
+      "catalog": "da-catalog",
+      "event_id": "da-status"
+    }
+  }
+]

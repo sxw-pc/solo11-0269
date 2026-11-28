@@ -1,0 +1,184 @@
+[
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "checkpoint-request",
+      "event_id": "rc-req",
+      "id": "rc-req",
+      "pod": "pod-reclaim",
+      "uid": "rc-uid",
+      "generation": 1,
+      "source": "local"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "image-manifest",
+      "event_id": "rc-manifest",
+      "id": "rc-manifest",
+      "request": "rc-req",
+      "part_count": 1,
+      "digest": "02830f31247489868d237869c85b436f7265b50b4f91a00b2c57d9c0de96c735"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "chunk",
+      "event_id": "rc-chunk",
+      "id": "rc-chunk",
+      "manifest": "rc-manifest",
+      "part": 0,
+      "content": "[{\"region\":\"heap-catalog\",\"offset\":0,\"hex\":\"7b22726f6f7473223a5b2254225d2c2268616e646c6573223a5b7b226964223a224831222c22746172676574223a224b31227d2c7b226964223a224832222c22746172676574223a224b32227d5d2c227461626c6573223a5b7b226964223a2254222c22656e7472696573223a5b7b226b6579223a224b31222c2276616c7565223a225631222c2267656e65726174696f6e223a317d2c7b226b6579223a224b32222c2276616c7565223a225632222c2267656e65726174696f6e223a317d5d7d\"},{\"region\":\"heap-catalog\",\"offset\":193,\"hex\":\"5d2c226f626a65637473223a5b7b226964223a2254222c226279746573223a332c227374726f6e67223a5b2254225d7d2c7b226964223a224b31222c226279746573223a322c227374726f6e67223a5b5d7d2c7b226964223a224b32222c226279746573223a322c227374726f6e67223a5b5d7d2c7b226964223a225631222c226279746573223a352c227374726f6e67223a5b224b32225d7d2c7b226964223a225632222c226279746573223a372c227374726f6e67223a5b224b31225d7d5d7d\"}]"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "chunk-verify",
+      "event_id": "rc-seal",
+      "manifest": "rc-manifest"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "catalog-load",
+      "id": "rc-catalog",
+      "capture": "rc-cap",
+      "event_id": "rc-early"
+    }
+  },
+  {
+    "command": "memorymap",
+    "input": {
+      "op": "capture-read",
+      "id": "rc-cap",
+      "manifest": "rc-manifest",
+      "event_id": "rc-capture"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "catalog-load",
+      "id": "rc-catalog",
+      "capture": "rc-cap",
+      "event_id": "rc-load"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-census",
+      "catalog": "rc-catalog",
+      "event_id": "rc-census"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-plan-propose",
+      "id": "rc-drill-h1",
+      "catalog": "rc-catalog",
+      "scope": "cache-directory",
+      "at": 10,
+      "actions": [
+        {
+          "action": "return-handle",
+          "handle": "H1"
+        }
+      ],
+      "event_id": "rc-drill-h1"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-plan-propose",
+      "id": "rc-drill-h2",
+      "catalog": "rc-catalog",
+      "scope": "cache-directory",
+      "at": 11,
+      "actions": [
+        {
+          "action": "return-handle",
+          "handle": "H2"
+        }
+      ],
+      "event_id": "rc-drill-h2"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-plan-propose",
+      "id": "rc-plan-both",
+      "catalog": "rc-catalog",
+      "scope": "cache-directory",
+      "at": 12,
+      "actions": [
+        {
+          "action": "return-handle",
+          "handle": "H1"
+        },
+        {
+          "action": "return-handle",
+          "handle": "H2"
+        }
+      ],
+      "event_id": "rc-plan-both"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-root-protect",
+      "catalog": "rc-catalog",
+      "object": "V1",
+      "at": 13,
+      "event_id": "rc-protect-v1"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-plan-authorize",
+      "plan": "rc-plan-both",
+      "scope": "cache-directory",
+      "admin": "cache-directory-admin",
+      "at": 14,
+      "event_id": "rc-auth-both"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-plan-execute",
+      "plan": "rc-plan-both",
+      "at": 15,
+      "event_id": "rc-exec-both"
+    }
+  },
+  {
+    "command": "allocator",
+    "input": {
+      "op": "alloc-claim",
+      "id": "rc-claim-stale",
+      "catalog": "rc-catalog",
+      "plan": "rc-plan-both",
+      "size": 12,
+      "at": 16,
+      "event_id": "rc-claim-stale"
+    }
+  },
+  {
+    "command": "allocator",
+    "input": {
+      "op": "alloc-status",
+      "catalog": "rc-catalog",
+      "event_id": "rc-status-stale"
+    }
+  }
+]

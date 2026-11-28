@@ -1,0 +1,125 @@
+[
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "checkpoint-request",
+      "event_id": "rl-req",
+      "id": "rl-req",
+      "pod": "pod-rootless",
+      "uid": "rl-uid",
+      "generation": 1,
+      "source": "local"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "image-manifest",
+      "event_id": "rl-manifest",
+      "id": "rl-manifest",
+      "request": "rl-req",
+      "part_count": 1,
+      "digest": "38b1ad87a47b14b75eda91a3c8ec12bab8c5ab16dc90b5bc99685eec2d9d6bfb"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "chunk",
+      "event_id": "rl-chunk",
+      "id": "rl-chunk",
+      "manifest": "rl-manifest",
+      "part": 0,
+      "content": "[{\"region\":\"heap-catalog\",\"offset\":0,\"hex\":\"7b22726f6f7473223a5b2254225d2c227461626c6573223a5b7b226964223a2254222c22656e7472696573223a5b7b226b6579223a224b31222c2276616c7565223a225631222c2267656e65726174696f6e223a317d2c7b226b6579223a224b32222c2276616c7565223a225632222c2267656e65726174696f6e223a317d5d7d5d2c226f626a65637473223a5b7b226964223a2254222c226279746573223a33\"},{\"region\":\"heap-catalog\",\"offset\":161,\"hex\":\"2c227374726f6e67223a5b2254225d7d2c7b226964223a224b31222c226279746573223a322c227374726f6e67223a5b5d7d2c7b226964223a224b32222c226279746573223a322c227374726f6e67223a5b5d7d2c7b226964223a225631222c226279746573223a352c227374726f6e67223a5b224b32225d7d2c7b226964223a225632222c226279746573223a372c227374726f6e67223a5b224b31225d7d5d7d\"}]"
+    }
+  },
+  {
+    "command": "checkpoint",
+    "input": {
+      "op": "chunk-verify",
+      "event_id": "rl-seal",
+      "manifest": "rl-manifest"
+    }
+  },
+  {
+    "command": "memorymap",
+    "input": {
+      "op": "capture-read",
+      "id": "rl-cap",
+      "manifest": "rl-manifest",
+      "event_id": "rl-capture"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "catalog-load",
+      "id": "rl-catalog",
+      "capture": "rl-cap",
+      "event_id": "rl-load"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-census",
+      "catalog": "rl-catalog",
+      "event_id": "rl-census"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-plan-propose",
+      "id": "rl-plan",
+      "catalog": "rl-catalog",
+      "scope": "cache-directory",
+      "at": 40,
+      "actions": [
+        {
+          "action": "clear-entry",
+          "table": "T",
+          "key": "K1"
+        },
+        {
+          "action": "clear-entry",
+          "table": "T",
+          "key": "K2"
+        }
+      ],
+      "event_id": "rl-plan"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-plan-authorize",
+      "plan": "rl-plan",
+      "scope": "cache-directory",
+      "admin": "cache-directory-admin",
+      "at": 41,
+      "event_id": "rl-auth"
+    }
+  },
+  {
+    "command": "heap",
+    "input": {
+      "op": "heap-plan-execute",
+      "plan": "rl-plan",
+      "at": 42,
+      "event_id": "rl-exec"
+    }
+  },
+  {
+    "command": "allocator",
+    "input": {
+      "op": "alloc-claim",
+      "id": "rl-claim",
+      "catalog": "rl-catalog",
+      "plan": "rl-plan",
+      "size": 1,
+      "at": 43,
+      "event_id": "rl-claim"
+    }
+  }
+]
