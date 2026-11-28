@@ -1,0 +1,1174 @@
+[
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-recover-masked",
+      "event_id": "recover-named",
+      "id": "named-box",
+      "contract": "named",
+      "manifest": {
+        "sender": "sender",
+        "receiver": "receiver",
+        "generation": "wo-7",
+        "sender_cut": 5,
+        "receiver_arrivals": 3,
+        "items": [
+          {
+            "id": "A",
+            "sent": 1,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "burn-in",
+            "instruction": "burn-in",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "B",
+            "sent": 2,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "dry-run",
+            "instruction": "dry-run",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "C",
+            "sent": 3,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "D",
+            "sent": 4,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "E",
+            "sent": 5,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "rinse",
+            "instruction": "rinse",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "F",
+            "sent": 6,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "polish",
+            "instruction": "polish",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "G",
+            "sent": 7,
+            "receiver": "other",
+            "generation": "wo-7",
+            "body": "audit",
+            "instruction": "audit",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "H",
+            "sent": 8,
+            "receiver": "receiver",
+            "generation": "wo-8",
+            "body": "wax",
+            "instruction": "wax",
+            "batch": null,
+            "interchangeable": false
+          }
+        ]
+      },
+      "slips": [
+        {
+          "id": "slip-0",
+          "candidates": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "slip-1",
+          "candidates": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "slip-2",
+          "candidates": [
+            "C",
+            "D"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-deliver-masked",
+      "event_id": "deliver-named-1",
+      "id": "named-box"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-recover-masked",
+      "event_id": "recover-proc",
+      "id": "proc-box",
+      "contract": "process",
+      "manifest": {
+        "sender": "sender",
+        "receiver": "receiver",
+        "generation": "wo-7",
+        "sender_cut": 5,
+        "receiver_arrivals": 3,
+        "items": [
+          {
+            "id": "A",
+            "sent": 1,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "burn-in",
+            "instruction": "burn-in",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "B",
+            "sent": 2,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "dry-run",
+            "instruction": "dry-run",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "C",
+            "sent": 3,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "D",
+            "sent": 4,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "E",
+            "sent": 5,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "rinse",
+            "instruction": "rinse",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "F",
+            "sent": 6,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "polish",
+            "instruction": "polish",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "G",
+            "sent": 7,
+            "receiver": "other",
+            "generation": "wo-7",
+            "body": "audit",
+            "instruction": "audit",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "H",
+            "sent": 8,
+            "receiver": "receiver",
+            "generation": "wo-8",
+            "body": "wax",
+            "instruction": "wax",
+            "batch": null,
+            "interchangeable": false
+          }
+        ]
+      },
+      "slips": [
+        {
+          "id": "slip-0",
+          "candidates": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "slip-1",
+          "candidates": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "slip-2",
+          "candidates": [
+            "C",
+            "D"
+          ]
+        }
+      ],
+      "authorized_batches": [
+        "fl-1"
+      ]
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-deliver-masked",
+      "event_id": "proc-deliver-1",
+      "id": "proc-box"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-deliver-masked",
+      "event_id": "proc-deliver-1",
+      "id": "proc-box"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-deliver-masked",
+      "event_id": "proc-deliver-2",
+      "id": "proc-box"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-deliver-masked",
+      "event_id": "proc-deliver-3",
+      "id": "proc-box"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-recover-masked",
+      "event_id": "recover-swap",
+      "id": "proc-swap",
+      "contract": "process",
+      "manifest": {
+        "sender": "sender",
+        "receiver": "receiver",
+        "generation": "wo-7",
+        "sender_cut": 5,
+        "receiver_arrivals": 3,
+        "items": [
+          {
+            "id": "A",
+            "sent": 1,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "burn-in",
+            "instruction": "burn-in",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "B",
+            "sent": 2,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "dry-run",
+            "instruction": "dry-run",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "C",
+            "sent": 3,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "E",
+            "sent": 4,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "rinse",
+            "instruction": "rinse",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "D",
+            "sent": 5,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          }
+        ]
+      },
+      "slips": [
+        {
+          "id": "slip-0",
+          "candidates": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "slip-1",
+          "candidates": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "slip-2",
+          "candidates": [
+            "C",
+            "D"
+          ]
+        }
+      ],
+      "authorized_batches": [
+        "fl-1"
+      ]
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-deliver-masked",
+      "event_id": "deliver-swap-1",
+      "id": "proc-swap"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-recover-masked",
+      "event_id": "recover-prefix",
+      "id": "prefix-box",
+      "contract": "named",
+      "manifest": {
+        "sender": "sender",
+        "receiver": "receiver",
+        "generation": "wo-7",
+        "sender_cut": 5,
+        "receiver_arrivals": 2,
+        "items": [
+          {
+            "id": "A",
+            "sent": 1,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "burn-in",
+            "instruction": "burn-in",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "B",
+            "sent": 2,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "dry-run",
+            "instruction": "dry-run",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "C",
+            "sent": 3,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "D",
+            "sent": 4,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "E",
+            "sent": 5,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "rinse",
+            "instruction": "rinse",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "F",
+            "sent": 6,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "polish",
+            "instruction": "polish",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "G",
+            "sent": 7,
+            "receiver": "other",
+            "generation": "wo-7",
+            "body": "audit",
+            "instruction": "audit",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "H",
+            "sent": 8,
+            "receiver": "receiver",
+            "generation": "wo-8",
+            "body": "wax",
+            "instruction": "wax",
+            "batch": null,
+            "interchangeable": false
+          }
+        ]
+      },
+      "slips": [
+        {
+          "id": "slip-0",
+          "candidates": [
+            "A"
+          ]
+        },
+        {
+          "id": "slip-1",
+          "candidates": [
+            "C",
+            "D"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-deliver-masked",
+      "event_id": "prefix-deliver-1",
+      "id": "prefix-box"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-deliver-masked",
+      "event_id": "prefix-deliver-2",
+      "id": "prefix-box"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-recover-masked",
+      "event_id": "recover-short",
+      "id": "short-box",
+      "contract": "named",
+      "manifest": {
+        "sender": "sender",
+        "receiver": "receiver",
+        "generation": "wo-7",
+        "sender_cut": 5,
+        "receiver_arrivals": 3,
+        "items": [
+          {
+            "id": "A",
+            "sent": 1,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "burn-in",
+            "instruction": "burn-in",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "B",
+            "sent": 2,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "dry-run",
+            "instruction": "dry-run",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "C",
+            "sent": 3,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "D",
+            "sent": 4,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "E",
+            "sent": 5,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "rinse",
+            "instruction": "rinse",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "F",
+            "sent": 6,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "polish",
+            "instruction": "polish",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "G",
+            "sent": 7,
+            "receiver": "other",
+            "generation": "wo-7",
+            "body": "audit",
+            "instruction": "audit",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "H",
+            "sent": 8,
+            "receiver": "receiver",
+            "generation": "wo-8",
+            "body": "wax",
+            "instruction": "wax",
+            "batch": null,
+            "interchangeable": false
+          }
+        ]
+      },
+      "slips": [
+        {
+          "id": "slip-0",
+          "candidates": [
+            "A"
+          ]
+        },
+        {
+          "id": "slip-1",
+          "candidates": [
+            "B"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-recover-masked",
+      "event_id": "recover-clash",
+      "id": "clash-box",
+      "contract": "named",
+      "manifest": {
+        "sender": "sender",
+        "receiver": "receiver",
+        "generation": "wo-7",
+        "sender_cut": 5,
+        "receiver_arrivals": 2,
+        "items": [
+          {
+            "id": "A",
+            "sent": 1,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "burn-in",
+            "instruction": "burn-in",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "B",
+            "sent": 2,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "dry-run",
+            "instruction": "dry-run",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "C",
+            "sent": 3,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "D",
+            "sent": 4,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "E",
+            "sent": 5,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "rinse",
+            "instruction": "rinse",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "F",
+            "sent": 6,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "polish",
+            "instruction": "polish",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "G",
+            "sent": 7,
+            "receiver": "other",
+            "generation": "wo-7",
+            "body": "audit",
+            "instruction": "audit",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "H",
+            "sent": 8,
+            "receiver": "receiver",
+            "generation": "wo-8",
+            "body": "wax",
+            "instruction": "wax",
+            "batch": null,
+            "interchangeable": false
+          }
+        ]
+      },
+      "slips": [
+        {
+          "id": "slip-0",
+          "candidates": [
+            "A"
+          ]
+        },
+        {
+          "id": "slip-1",
+          "candidates": [
+            "A"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-deliver-masked",
+      "event_id": "deliver-clash",
+      "id": "clash-box"
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-recover-masked",
+      "event_id": "recover-beyond",
+      "id": "beyond-box",
+      "contract": "named",
+      "manifest": {
+        "sender": "sender",
+        "receiver": "receiver",
+        "generation": "wo-7",
+        "sender_cut": 5,
+        "receiver_arrivals": 1,
+        "items": [
+          {
+            "id": "A",
+            "sent": 1,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "burn-in",
+            "instruction": "burn-in",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "B",
+            "sent": 2,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "dry-run",
+            "instruction": "dry-run",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "C",
+            "sent": 3,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "D",
+            "sent": 4,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "E",
+            "sent": 5,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "rinse",
+            "instruction": "rinse",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "F",
+            "sent": 6,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "polish",
+            "instruction": "polish",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "G",
+            "sent": 7,
+            "receiver": "other",
+            "generation": "wo-7",
+            "body": "audit",
+            "instruction": "audit",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "H",
+            "sent": 8,
+            "receiver": "receiver",
+            "generation": "wo-8",
+            "body": "wax",
+            "instruction": "wax",
+            "batch": null,
+            "interchangeable": false
+          }
+        ]
+      },
+      "slips": [
+        {
+          "id": "slip-0",
+          "candidates": [
+            "F"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-recover-masked",
+      "event_id": "recover-port",
+      "id": "port-box",
+      "contract": "named",
+      "manifest": {
+        "sender": "sender",
+        "receiver": "receiver",
+        "generation": "wo-7",
+        "sender_cut": 5,
+        "receiver_arrivals": 1,
+        "items": [
+          {
+            "id": "A",
+            "sent": 1,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "burn-in",
+            "instruction": "burn-in",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "B",
+            "sent": 2,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "dry-run",
+            "instruction": "dry-run",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "C",
+            "sent": 3,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "D",
+            "sent": 4,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "E",
+            "sent": 5,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "rinse",
+            "instruction": "rinse",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "F",
+            "sent": 6,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "polish",
+            "instruction": "polish",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "G",
+            "sent": 7,
+            "receiver": "other",
+            "generation": "wo-7",
+            "body": "audit",
+            "instruction": "audit",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "H",
+            "sent": 8,
+            "receiver": "receiver",
+            "generation": "wo-8",
+            "body": "wax",
+            "instruction": "wax",
+            "batch": null,
+            "interchangeable": false
+          }
+        ]
+      },
+      "slips": [
+        {
+          "id": "slip-0",
+          "candidates": [
+            "G"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-recover-masked",
+      "event_id": "recover-generation",
+      "id": "generation-box",
+      "contract": "named",
+      "manifest": {
+        "sender": "sender",
+        "receiver": "receiver",
+        "generation": "wo-7",
+        "sender_cut": 5,
+        "receiver_arrivals": 1,
+        "items": [
+          {
+            "id": "A",
+            "sent": 1,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "burn-in",
+            "instruction": "burn-in",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "B",
+            "sent": 2,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "dry-run",
+            "instruction": "dry-run",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "C",
+            "sent": 3,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "D",
+            "sent": 4,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "E",
+            "sent": 5,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "rinse",
+            "instruction": "rinse",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "F",
+            "sent": 6,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "polish",
+            "instruction": "polish",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "G",
+            "sent": 7,
+            "receiver": "other",
+            "generation": "wo-7",
+            "body": "audit",
+            "instruction": "audit",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "H",
+            "sent": 8,
+            "receiver": "receiver",
+            "generation": "wo-8",
+            "body": "wax",
+            "instruction": "wax",
+            "batch": null,
+            "interchangeable": false
+          }
+        ]
+      },
+      "slips": [
+        {
+          "id": "slip-0",
+          "candidates": [
+            "H"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "command": "mailcheck",
+    "input": {
+      "op": "inbox-recover-masked",
+      "event_id": "recover-unknown",
+      "id": "unknown-box",
+      "contract": "named",
+      "manifest": {
+        "sender": "sender",
+        "receiver": "receiver",
+        "generation": "wo-7",
+        "sender_cut": 5,
+        "receiver_arrivals": 1,
+        "items": [
+          {
+            "id": "A",
+            "sent": 1,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "burn-in",
+            "instruction": "burn-in",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "B",
+            "sent": 2,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "dry-run",
+            "instruction": "dry-run",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "C",
+            "sent": 3,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "D",
+            "sent": 4,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "flush",
+            "instruction": "flush",
+            "batch": "fl-1",
+            "interchangeable": true
+          },
+          {
+            "id": "E",
+            "sent": 5,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "rinse",
+            "instruction": "rinse",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "F",
+            "sent": 6,
+            "receiver": "receiver",
+            "generation": "wo-7",
+            "body": "polish",
+            "instruction": "polish",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "G",
+            "sent": 7,
+            "receiver": "other",
+            "generation": "wo-7",
+            "body": "audit",
+            "instruction": "audit",
+            "batch": null,
+            "interchangeable": false
+          },
+          {
+            "id": "H",
+            "sent": 8,
+            "receiver": "receiver",
+            "generation": "wo-8",
+            "body": "wax",
+            "instruction": "wax",
+            "batch": null,
+            "interchangeable": false
+          }
+        ]
+      },
+      "slips": [
+        {
+          "id": "slip-0",
+          "candidates": [
+            "Z"
+          ]
+        }
+      ]
+    }
+  }
+]
